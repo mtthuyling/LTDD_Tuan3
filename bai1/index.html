@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetpack Compose Navigation Prototype</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <i class="fa-solid fa-battery-full"></i>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 1: Welcome -->
+        <div class="screen active" id="screen-1">
+            <div class="screen-1-content">
+                <div class="logo-box">
+                    <img src="image.png" alt="Logo" class="logo">
+                </div>
+                <h2 class="screen-title">Jetpack Compose</h2>
+                <p class="screen-desc">
+                    Jetpack Compose is a modern UI toolkit for building native Android applications using a declarative programming approach.
+                </p>
+            </div>
+            <div class="footer-action">
+                <button class="btn-primary" onclick="navigateTo('screen-2')">I'm ready</button>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 2: UI Components List -->
+        <div class="screen" id="screen-2">
+            <div class="nav-header">
+                <span>UI Components List</span>
+            </div>
+            <div class="list-content">
+                <div class="category-title">Display</div>
+                <div class="component-card" onclick="navigateTo('screen-3')">
+                    <h4>Text</h4>
+                    <p>Displays text</p>
+                </div>
+                <div class="component-card" onclick="navigateTo('screen-images')">
+                    <h4>Image</h4>
+                    <p>Displays an image</p>
+                </div>
+
+                <div class="category-title">Input</div>
+                <div class="component-card" onclick="navigateTo('screen-textfield')">
+                    <h4>TextField</h4>
+                    <p>Input field for text</p>
+                </div>
+                <div class="component-card">
+                    <h4>PasswordField</h4>
+                    <p>Input field for passwords</p>
+                </div>
+
+                <div class="category-title">Layout</div>
+                <div class="component-card">
+                    <h4>Column</h4>
+                    <p>Arranges elements vertically</p>
+                </div>
+                <div class="component-card" onclick="navigateTo('screen-row-layout')">
+                    <h4>Row</h4>
+                    <p>Arranges elements horizontally</p>
+                </div>
+
+                <div class="component-card custom-card" style="margin-top: 16px;">
+                    <h4>Tự tìm hiểu</h4>
+                    <p>Tìm ra tất cả các thành phần UI cơ bản</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 3: Text Detail -->
+        <div class="screen" id="screen-3">
+            <div class="nav-header">
+                <i class="fa-solid fa-chevron-left" onclick="navigateTo('screen-2')"></i>
+                <span>Text Detail</span>
+            </div>
+            <div class="detail-content">
+                <p class="sample-text">
+                    Mai Linh <span class="styled-brown">Vibecode</span> chứ code tay <span class="styled-italic">thì</span> hên xui <span class="styled-underline">^^</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 4: Images Detail -->
+       <div class="screen" id="screen-images">
+            <div class="nav-header">
+                <i class="fa-solid fa-chevron-left" onclick="navigateTo('screen-2')"></i>
+                <span>Images</span>
+            </div>
+            <div class="detail-content" style="justify-content: flex-start; overflow-y: auto;">
+                <div class="img-card-container"> 
+                    <img src="uthlogo.png" alt="Image 1">
+                    <span class="img-link-text">https://giaothongvantaphcm.edu.vn/wp-content/uploads/2025/01/Logo-GTVT.png</span>
+                </div>
+                <div class="img-card-container" style="margin-top: 12px;">
+                    <img src="frontuth.png" alt="Image 2">
+                    <p class="img-caption">In app</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 5: TextField Detail -->
+        <div class="screen" id="screen-textfield">
+            <div class="nav-header">
+                <i class="fa-solid fa-chevron-left" onclick="navigateTo('screen-2')"></i>
+                <span>TextField</span>
+            </div>
+            <div class="detail-content">
+                <input type="text" id="liveInput" class="text-input-box" placeholder="Thông tin nhập" oninput="handleTyping(event)">
+                <p id="dynamicFeedback" class="dynamic-feedback">Tự động cập nhật dữ liệu theo textfield</p>
+            </div>
+        </div>
+
+        <!-- MÀN HÌNH 6: Row Layout Detail -->
+        <div class="screen" id="screen-row-layout">
+            <div class="nav-header">
+                <i class="fa-solid fa-chevron-left" onclick="navigateTo('screen-2')"></i>
+                <span>Row Layout</span>
+            </div>
+            <div class="detail-content">
+                <div class="row-layout-container">
+                    <div class="row-group">
+                        <div class="row-box"></div>
+                        <div class="row-box dark"></div>
+                        <div class="row-box"></div>
+                    </div>
+                    <div class="row-group">
+                        <div class="row-box"></div>
+                        <div class="row-box dark"></div>
+                        <div class="row-box"></div>
+                    </div>
+                    <div class="row-group">
+                        <div class="row-box"></div>
+                        <div class="row-box dark"></div>
+                        <div class="row-box"></div>
+                    </div>
+                    <div class="row-group">
+                        <div class="row-box"></div>
+                        <div class="row-box dark"></div>
+                        <div class="row-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(screenId) {
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => {
+                screen.classList.remove('active');
+            });
+
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+            }
+        }
+
+        // TextField tự động
+        function handleTyping(event) {
+            const value = event.target.value;
+            const feedback = document.getElementById('dynamicFeedback');
+            if (value.trim() === "") {
+                feedback.textContent = "Tự động cập nhật dữ liệu theo textfield";
+            } else {
+                feedback.textContent = value;
+            }
+        }
+    </script>
+
+</body>
+</html>
